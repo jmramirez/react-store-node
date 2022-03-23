@@ -101,8 +101,8 @@ router.get(
         variants: {
           select: {
             price: true,
-            color: { select: { name: true } },
-            capacity: { select: { capacity: true } },
+            color: { select: { id: true, name: true } },
+            capacity: { select: { id: true, capacity: true } },
           },
           orderBy: [
             { color: { name: 'asc' } },
@@ -126,10 +126,11 @@ router.get(
       images: product.images,
       features: product.features,
       variants: product.variants.map((variant) => ({
-        id: variant.id,
+        colorId: variant.color.id,
         color: variant.color.name,
+        storageId: variant.capacity.id,
         capacity: variant.capacity.capacity,
-        prisma: parseFloat(variant.price),
+        price: parseFloat(variant.price),
       })),
     });
   })
