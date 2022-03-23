@@ -3,6 +3,7 @@ import errorsMiddleware from './middlewares/errors';
 import logger from 'morgan';
 import environment from './config/environment';
 import apiRoutes from './controllers';
+import cors from 'cors'
 
 export default class App {
   constructor() {
@@ -10,6 +11,7 @@ export default class App {
     this.app.use(
       logger('dev', { skip: (req, res) => environment.env === 'test' })
     );
+    this.app.use(cors())
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.get('/', (req, res) => {
