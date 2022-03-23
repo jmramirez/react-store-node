@@ -1,0 +1,51 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.filters {
+  max-width: 276px;
+
+  @include desktop{
+    width: 285px;
+  }
+
+  &__header {
+    display: none;
+
+
+    @include desktop {
+      display: flex;
+    }
+
+    &__heading {
+      @include font_base(1.3rem,700);
+      font-family: $primary-heading;
+    }
+
+    &__icon {
+      transition: all 0.2s ease-in-out;
+      font-size: 1.2rem;
+
+      &--open {
+        transform: rotate(90deg);
+      }
+
+      @include desktop {
+        display: none;
+      }
+    }
+
+    &--button {
+      box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 4%);
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+}
