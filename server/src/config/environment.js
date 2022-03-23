@@ -1,6 +1,6 @@
 export default {
   env: process.env.NODE_ENV || 'development',
-  port: parseInt(process.env.PORT) || 3000,
+  port: parseInt(process.env.PORT) || 8080,
   jwtSecret:
     process.env.JWT_SECRET ||
     '7231563d1c75ced86ff39ff7bc276b2da977491f43f7d6a074f1a3d19b60b04b',
