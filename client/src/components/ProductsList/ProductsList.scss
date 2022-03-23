@@ -1,0 +1,22 @@
+@use '../../partials/mixins' as *;
+@use "../../partials/variables" as *;
+
+.products {
+  @include desktop {
+    width: 794px;
+  }
+
+  &__header {
+    @include header;
+    margin-bottom: 2rem;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    @include desktop {
+      justify-content: space-between;
+    }
+  }
+}
