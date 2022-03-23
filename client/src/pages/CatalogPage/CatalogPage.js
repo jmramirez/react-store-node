@@ -1,6 +1,7 @@
 import './CatalogPage.scss'
 import { useLocation } from "react-router-dom";
 import {Filters} from "../../components/Filters/Filters";
+import {ProductsList} from "../../components/ProductsList/ProductsList";
 
 export const CatalogPage = () => {
   let location = useLocation()
@@ -8,7 +9,7 @@ export const CatalogPage = () => {
   return(
     <section className="catalog">
       <Filters location={location}/>
-      <p>product page</p>
+      <ProductsList location={location} />
     </section>
   )
 }

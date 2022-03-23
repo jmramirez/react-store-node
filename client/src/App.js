@@ -4,11 +4,14 @@ import {CatalogPage} from "./pages/CatalogPage/CatalogPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<CatalogPage />}/>
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<CatalogPage />}/>
+          <Route path='/products' element={<CatalogPage />}/>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
