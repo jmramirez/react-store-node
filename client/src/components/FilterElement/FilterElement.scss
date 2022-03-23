@@ -1,0 +1,36 @@
+.filter-item{
+  width: 6rem;
+  padding: .5rem;
+  display: flex;
+  margin: .5rem 0;
+  border: 1px solid #DADADA;
+  justify-content: center;
+  align-items: center;
+  transition: all .04s ease-in-out;
+  border-radius: .5rem;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #02558b;
+    background-color: #02558b;
+    color: #FFFFFF;
+  }
+
+  &--active {
+    border: 1px solid #E42D9F;
+    color: #FFFFFF;
+    background-color: #02558b;
+    border-radius: .5rem;
+  }
+
+  &--active-all {
+    border: 1px solid #E42D9F;
+    border-radius: .5rem;
+  }
+
+  &__header {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.2rem;
+  }
+}
