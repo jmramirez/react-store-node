@@ -1,0 +1,154 @@
+@use './reset' as *;
+@use './variables' as *;
+@use './mixins' as *;
+
+body {
+  font-family: $primary-font;
+  color: $primary-black;
+  background-color: #FAFAFA;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  @include tablet {
+    justify-content: flex-end;
+  }
+  
+  &-content {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 1rem;
+
+    &__header {
+      @include h1;
+    }
+
+    &__label {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: $primary-black;
+    }
+
+    &__input {
+      height: 2rem;
+      font-family: inherit;
+      border: 1px solid #E6E4E4;
+      background-color: #FAFAFA;
+      padding: 0.2rem 1rem;
+      font-weight: 500;
+      border-radius: 3rem;
+      outline: none;
+      @include font_base(1.1rem, 500);
+
+      &:focus {
+        box-shadow: 0 0 0 1pt #02558b;
+        color: $primary-black;
+      }
+    }
+
+    &__button {
+      background-color: #FFFFFF;
+      border: none;
+      margin-top: 0.6rem;
+      text-align: left;
+      cursor: pointer;
+      color: #02558b;
+      font-size: 0.8rem;
+    }
+    
+    &__name {
+      display: flex;
+      justify-content: space-between;
+      
+      &__controls {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &--checkout {
+      width: 100%;
+
+      @include tablet {
+        width: 53%;
+        border-right: 2px solid #E6E4E4;
+      }
+    }
+    
+    &--summary {
+      width: 100%;
+
+      @include tablet {
+        width: 45%;
+      }
+    }
+
+    &__header--md {
+      @extend .form-content__header;
+      font-size: 1.4rem;
+      border-top: 2px solid #E6E4E4;
+      border-bottom: 2px solid #E6E4E4;
+      margin-top: 1.5rem;
+    }
+
+    @include tablet {
+      padding: 0 2rem;
+    }
+  }
+
+  &-action {
+    padding: 1rem 0.5rem;
+    background-color: #DADADA;
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    
+
+    @include tablet{
+      padding: 1rem 2rem;
+      border-bottom-left-radius: .5rem;
+      border-bottom-right-radius: .5rem;
+    }
+    
+    &__cancel {
+      border: 1px solid #02558b;
+      background-color: #E42D9F;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      font: inherit;
+      align-items: center;
+      padding: .5rem 2rem;
+      @include font_base(.9rem,500);
+      border-radius: 2.5rem;
+    }
+    
+    &__accept {
+      @include auth_button(#02558b, #E42D9F);
+      color: #FFFFFF;
+      margin-left: auto;
+      
+      &:hover {
+        border: 1px solid #E42D9F;
+      }
+      
+      &--login {
+        margin-right: 0.5rem;
+      }
+    }
+    
+  }
+  
+  &__error {
+    @include font_base(0.7rem, 600);
+    color: red;
+    margin-top: 0.2rem;
+  }
+}

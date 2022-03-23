@@ -1,0 +1,11 @@
+@use './partials/globals' as *;
+
+
+
+.App {
+  &__open {
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+}
