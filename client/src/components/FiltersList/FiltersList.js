@@ -29,7 +29,7 @@ export const FiltersList = ({ location, open }) =>{
       <MultiFilter title="Colors" items={filtersItems.colors} location={location} queryKey="colors" />
       <MultiFilter title="Operating System" items={filtersItems.os} location={location} queryKey="os" />
       <MultiFilter title="Features" items={filtersItems.features} location={location} queryKey="features" />
-      <MultiFilter title="Capacity" items={filtersItems.capacity} location={location} queryKey="Storage" />
+      <MultiFilter title="Capacity" items={filtersItems.capacity} location={location} queryKey="storage" />
     </div>
   )
 }
