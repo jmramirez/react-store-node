@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Brand {
+  id        String @id @default(uuid())
+  name      String
+  products  Product[]
+}
+
+model Feature {
+  id        String @id @default(uuid())
+  name      String
+  products  Product[]
+}
+
+model Storage {
+  id        String  @id @default(uuid())
+  capacity  String
+  variants  ProductVariants[]
+}
+
+model Color {
+  id        String @id @default(uuid())
+  name      String
+  variants  ProductVariants[]
+}
+
+model Os {
+  id        String @id  @default(uuid())
+  name      String
+  products  Product[]
+}
+
+model Image {
+  id        String @id @default(uuid())
+  url       String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model Product {
+  id                String @id @default(uuid())
+  name              String
+  slug              String @unique
+  thumbnail         String
+  shortDescription  String
+  description       String
+  screenSize        Decimal
+  standByTime       Decimal
+  talkTime          Decimal
+  brand             Brand     @relation(fields: [brandId], references: [id])
+  brandId           String
+  os                Os     @relation(fields: [osId], references: [id])
+  osId              String
+  features          Feature[]
+  images            Image[]
+  variants          ProductVariants[]
+}
+
+model ProductVariants {
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  color     Color   @relation(fields: [colorId], references: [id])
+  colorId   String
+  capacity  Storage @relation(fields: [storageId], references: [id])
+  storageId String
+  price     Decimal
+
+  @@id([productId, colorId, storageId])
+}
+
+model User {
+ id             String      @id @default(uuid())
+ email          String      @unique @db.VarChar(100)
+ password       String
+ firstName       String     @db.VarChar(50)
+ lastName       String     @db.VarChar(50)
+ refreshToken   String
+ Roles          Role[]
+}
+
+model Role {
+ id         String      @id @default(uuid())
+ name       String      @unique
+ Users      User[]
+}
