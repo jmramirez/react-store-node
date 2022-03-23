@@ -16,7 +16,7 @@ export const Filters = ({ location, history}) => {
         <h2 className="filters__header__heading">Filters</h2>
         <span className={`material-icons filters__header__icon ${openList? 'filters__header__icon--open': ''}`}>arrow_forward_ios</span>
       </div>
-      <FiltersList location={location} open={openList}/>
+      <FiltersList location={location} open={openList} history={history}/>
     </div>
   )
 }
