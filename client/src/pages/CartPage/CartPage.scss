@@ -1,0 +1,37 @@
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+
+.shoppingCart {
+  min-width: 16.75rem;
+  margin: 0 1.5rem;
+  padding: 1.625rem 0;
+
+  @include tablet {
+    padding: 2.5rem 0;
+  }
+
+  @include desktop {
+    max-width: 67.5rem;
+    padding: 3rem 0;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    @include font_base(2rem, 600);
+    font-family: $primary-heading;
+  }
+
+  &__container {
+    margin-top: 2rem;
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 4%);
+    padding-top: 2rem;
+
+    @include desktop {
+      padding-top: 4rem;
+    }
+  }
+}
