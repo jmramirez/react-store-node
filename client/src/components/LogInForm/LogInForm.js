@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {hideAuthModal} from "../../redux/actions/modalActions";
+import {login} from "../../redux/actions/userActions";
 
 const LogInForm = ({ signUp }) => {
   const { register, handleSubmit, reset, formState: { errors }} = useForm({ defaultValues: {email: "", password: ""}})
@@ -26,11 +27,11 @@ const LogInForm = ({ signUp }) => {
 
   const onSubmit = (data, e) => {
     e.preventDefault()
-    /*dispatch(login(data.email,data.password)*/
+    dispatch(login(data.email,data.password))
   }
 
   const demoLogin = () => {
-    /*dispatch(login("demouser@example.com", "creStoreNet"))*/
+    dispatch(login("demouser@example.com", "creStoreNet"))
   }
 
   return (

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef} from "react";
 import {useForm} from "react-hook-form";
 import {hideAuthModal} from "../../redux/actions/modalActions";
+import {signup} from "../../redux/actions/userActions";
 
 export const RegisterForm = () => {
   const { register, handleSubmit, reset, formState: { errors }, watch } = useForm({ defaultValues: { }})
@@ -27,8 +28,7 @@ export const RegisterForm = () => {
 
   const onSubmit = (data, e) => {
     e.preventDefault()
-    /*dispatch(signup(data.firstName, data.lastName, data.email, data.password))*/
-    console.log(error)
+    dispatch(signup(data.firstName, data.lastName, data.email, data.password))
   }
 
   return (
