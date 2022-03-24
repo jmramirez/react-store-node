@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import prisma from './../config/client';
 import asyncWrapper from './../utils/asyncWrapper';
-import { body, validationResult } from 'express-validator';
+import {body, check, validationResult} from 'express-validator';
 import bcrypt from 'bcrypt';
 import JWTUtils from '../utils/jwt.utils';
 
@@ -9,7 +9,10 @@ const router = Router();
 
 router.post(
   '/register',
-  body('email').not().isEmpty(),
+  check('email', 'Email is required to register').notEmpty(),
+  check('password', 'Password is required to register').notEmpty(),
+  check('firstName', 'First Name is required to register').notEmpty(),
+  check('lastName', 'Last Name is required to register').notEmpty(),
   asyncWrapper(async (req, res) => {
     const errors = validationResult(req);
 
@@ -48,10 +51,24 @@ router.post(
         },
       },
     });
+
+    const roles = await prisma.Role.findMany({
+      where: {
+        Users: {
+          some: {
+            email: userCreated.email
+          }
+        }
+      }
+    })
+
     return res.status(200).send({
+      token: accessToken,
+      refreshToken,
+      fullName: `${userCreated.firstName} ${userCreated.lastName}`,
+      roles: roles.map((role) => role.name),
       success: true,
-      message: 'User registered successfully',
-      data: { accessToken, refreshToken },
+      message: 'User registered successfully'
     });
   })
 );
