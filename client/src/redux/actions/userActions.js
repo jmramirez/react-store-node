@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_REQUEST,
@@ -28,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 
     const { data } = await axios.post(
-      `${webAPIURL}/user/auth`,
+      `${webAPIURL}/auth`,
       { email, password },
       config
     )
@@ -66,7 +67,7 @@ export const signup = (firstName, lastName, email, password) => async (dispatch)
     }
 
     const { data } = await axios.post(
-      `${webAPIURL}/user`,
+      `${webAPIURL}/register`,
       { firstName, lastName, email, password},
       config
     )
@@ -75,9 +76,7 @@ export const signup = (firstName, lastName, email, password) => async (dispatch)
       type: USER_REGISTER_SUCCESS,
       payload: data,
     })
-
-    localStorage.setItem('userInfo', JSON.stringify(data))
-
+    toast.success("Registered Successfully")
     dispatch({
       type: HIDE_AUTH_MODAL
     })
