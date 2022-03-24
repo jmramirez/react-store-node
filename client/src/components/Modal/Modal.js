@@ -1,13 +1,18 @@
 import './Modal.scss'
+import {useDispatch} from "react-redux";
+import {hideAuthModal, showAuthModal} from "../../redux/actions/modalActions";
+import LogInForm from "../LogInForm/LogInForm";
+import {RegisterForm} from "../RegisterForm/RegisterForm";
 
 const Modal = ({ modalOpen, action, openSignUpForm }) => {
+  const dispatch = useDispatch()
 
   const closeModal = () => {
-    console.log('nothing yet')
+    dispatch(hideAuthModal())
   }
 
   const openModal = () => {
-    console.log('nothing yet')
+    dispatch(showAuthModal())
   }
 
   return(
@@ -17,6 +22,8 @@ const Modal = ({ modalOpen, action, openSignUpForm }) => {
         <button className="modal__close-button" onClick={closeModal} type="button">
           <span className="modal__close-icon"></span>
         </button>
+        { action === 'signin' && <LogInForm signUp={openSignUpForm} />}
+        { action === 'signup' && <RegisterForm />}
       </div>
     </div>
   )
