@@ -94,6 +94,8 @@ router.get(
       select: {
         id: true,
         name: true,
+        slug: true,
+        thumbnail: true,
         shortDescription: true,
         features: { select: { id: true, name: true } },
         description: true,
@@ -128,6 +130,7 @@ router.get(
       variants: product.variants.map((variant) => ({
         productId: product.id,
         name: product.name,
+        slug: product.slug,
         thumbnail: product.thumbnail,
         colorId: variant.color.id,
         color: variant.color.name,
