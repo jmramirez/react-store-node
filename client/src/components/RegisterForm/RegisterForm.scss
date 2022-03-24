@@ -1,0 +1,11 @@
+@use "../../partials/variables" as *;
+@use "../../partials/globals" as *;
+@use "../../partials/mixins" as *;
+
+.form--xl {
+  @extend .form;
+
+  @include tablet{
+    height: 31rem;
+  }
+}
