@@ -4,8 +4,10 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import { webAPIURL } from '../../AppSettings'
 import _ from 'lodash'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {ProductImages} from "../../components/ProductImages/ProductImages";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../redux/actions/cartActions";
 
 export const ProductPage = () => {
   const [product, setProduct ] = useState(null)
@@ -17,6 +19,8 @@ export const ProductPage = () => {
   const [storage, setStorage] = useState('')
   const [variant, setVariant] = useState(null)
   const [purchaseEnable, setPurchaseEnable] = useState(true)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { slug } = useParams();
 
   useEffect(() => {
@@ -69,6 +73,11 @@ export const ProductPage = () => {
     setPurchaseEnable(false)
   }
 
+  const addProductToCart = (product) => {
+    dispatch(addToCart(product))
+    navigate('/cart')
+  }
+
   return (
     <section className="product-details">
       <Link to='/products' className="product-details-top__link"><span className="material-icons product-details-top__link__icon">arrow_back</span><span className="product-details-top__link__text">Return to Products</span></Link>
@@ -109,7 +118,7 @@ export const ProductPage = () => {
                   )
                 }
                 <div className="product-details-top__content-purchase">
-                  <button disabled={purchaseEnable} className="product-details-top__content-purchase__button" ><span className="material-icons">add</span> Add To Cart</button>
+                  <button disabled={purchaseEnable} className="product-details-top__content-purchase__button" onClick={() => addProductToCart(variant)}><span className="material-icons">add</span> Add To Cart</button>
                 </div>
               </div>
 
