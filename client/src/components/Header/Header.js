@@ -3,9 +3,11 @@ import {Link, useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import Modal from "../Modal/Modal";
 import {useDispatch, useSelector} from "react-redux";
-import {showAuthModal} from "../../redux/actions/modalActions";
+import {hideAuthModal, showAuthModal} from "../../redux/actions/modalActions";
 import axios from "axios";
-import {logout} from "../../redux/actions/userActions";
+import {login, logout} from "../../redux/actions/userActions";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export const Header = () => {
@@ -18,7 +20,7 @@ export const Header = () => {
 
 
   const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo, token } = userLogin
+  const { userInfo  } = userLogin
 
   useEffect(() => {
     const reducer = (accumulator, cartItem) => accumulator + cartItem.quantity;
@@ -28,8 +30,8 @@ export const Header = () => {
 
   useEffect(() => {
     if(userInfo)
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-  }, [token, userInfo])
+      axios.defaults.headers.common["Authorization"] = `Bearer ${userInfo.token}`
+  }, [userInfo])
 
   const openModal = (action) => {
     dispatch(showAuthModal(action))
@@ -41,7 +43,7 @@ export const Header = () => {
   }
 
   const demoLogin = () => {
-    console.log('nothing for now')
+    dispatch(login("demouser@example.com","coreStoreNet"))
   }
 
   return(
@@ -87,6 +89,7 @@ export const Header = () => {
           </Link>
         </div>
       </nav>
+      <ToastContainer autoClose={2000} />
       <Modal modalOpen={modalOpen} action={action}  openSignUpForm={openModal}/>
     </header>
   )
