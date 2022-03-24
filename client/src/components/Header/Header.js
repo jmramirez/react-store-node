@@ -1,6 +1,7 @@
 import './Header.scss'
 import {Link} from "react-router-dom";
 import { useState } from "react";
+import Modal from "../Modal/Modal";
 
 
 export const Header = () => {
@@ -41,7 +42,7 @@ export const Header = () => {
           </Link>
         </div>
       </nav>
-      {/*<Modal modalOpen={modalOpen} action={action}  openSignUpForm={openModal}/>*/}
+      {/*<Modal modalOpen={true} action="login"  openSignUpForm={openModal}/>*/}
     </header>
   )
 }
