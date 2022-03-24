@@ -10,7 +10,6 @@ export const ProductsList = ({ location }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        console.log(location.search)
         const response = await axios.get(`${webAPIURL}/products${location.search}`)
         setProducts(response.data)
       } catch (err) {
