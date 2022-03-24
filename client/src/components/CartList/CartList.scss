@@ -1,0 +1,133 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.cartList {
+  padding: 0 1rem;
+
+  @include tablet{
+    padding: 0 2rem;
+  }
+
+  &__header {
+    display: flex;
+    border-top: 2px solid #DEE2E6;
+    border-bottom: 2px solid #DEE2E6;
+    padding: 1rem 0;
+
+    &-product {
+      width: 46%;
+    }
+
+    &-product{
+      &-info {
+        width: 12%;
+        display: none;
+
+        @include tablet{
+          display: flex;
+        }
+      }
+
+      &-action {
+        width: 5%;
+
+        &__button {
+
+        }
+      }
+    }
+
+    &__labels {
+      @include font_base(1.1rem, 600);
+      font-family: $primary-font;
+    }
+  }
+
+  &__empty {
+    @include font_base(1.1rem, 500);
+    padding: 0 1rem 2rem 1rem;
+
+    @include tablet{
+      font-size: 1.5rem;
+      padding: 0 2rem 2rem 2rem;
+    }
+  }
+
+  &__body {
+    padding: 1.5rem 0;
+  }
+
+  &-actions {
+    padding: 1rem;
+    background-color: #DADADA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet{
+      padding: 1.5rem 2rem;
+    }
+
+    &__link-back {
+      @include link_base(0.5rem, 0.66rem);
+      width: 2rem;
+
+      @include tablet{
+        width: 13rem;
+      }
+
+      &__text {
+        padding-left: 0.3rem;
+        transition: all 0.3s ease-in-out;
+        display: none;
+
+        @include tablet {
+          display: flex;
+        }
+
+        &:hover {
+          padding-left: .6rem;
+        }
+      }
+      &__icon {
+        font-size: 0.8rem;
+      }
+    }
+
+    &__total {
+      width: 52%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 0.5rem;
+
+      &__content {
+        @include font_base(1rem, 700);
+
+        @include tablet {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    &__link-check {
+      @include link_base(0.5rem, 0.66rem);
+      width: 5.5rem;
+
+      @include tablet{
+        width: 7.5rem;
+      }
+
+      &__text {
+        padding-left: 0.3rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+          margin-right: .6rem;
+        }
+      }
+      &__icon {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

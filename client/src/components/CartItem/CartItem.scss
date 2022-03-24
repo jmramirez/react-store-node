@@ -1,0 +1,194 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.cartItem {
+  display: flex;
+
+  &__info {
+    width: 82%;
+
+    @include tablet{
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    &-product {
+      display: flex;
+      width: 100%;
+      padding: 0 0.5rem;
+
+      @include tablet{
+        width: 48%;
+      }
+
+      &__image {
+        width: 9rem;
+        height: 9rem;
+
+        @include tablet{
+          width: 8rem;
+          height: 11rem;
+        }
+
+        &__thumb {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 50%;
+        padding: 0;
+
+        @include tablet{
+          padding: 2rem 0;
+        }
+
+        &__label {
+          @include font_base(0.9rem, 500);
+          padding: 0.5rem 0;
+          line-height: 1rem;
+
+          @include tablet {
+            font-size: 1rem;
+          }
+
+          &__name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            line-height: 1rem;
+            padding: 0.5rem 0;
+          }
+        }
+      }
+    }
+
+    &-price {
+      width: 12%;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+
+      &__heading {
+        @include font_base(1rem, 600);
+        margin-right: 0.5rem;
+
+        @include tablet {
+          display: none;
+        }
+      }
+
+      &__label {
+        @include font_base(1rem, 500);
+      }
+    }
+
+    &-quantity {
+      width: 12%;
+      display: flex;
+      padding: 0.5rem;
+
+      @include tablet {
+        justify-content: center;
+        flex-direction: column;
+        padding: 0;
+      }
+
+      &__heading {
+        @include font_base(1rem, 600);
+        margin-right: 0.5rem;
+
+        @include tablet {
+          display: none;
+        }
+      }
+
+      &__label {
+        @include font_base(1.2rem, 500);
+        margin: 0 0.5rem;
+      }
+
+      &__button {
+        border-radius: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1rem;
+        height: 1rem;
+        border: none;
+        background-color: #02558b;
+        color: #FFFFFF;
+        cursor: pointer;
+
+        &__span {
+          font-size: 0.9rem;
+        }
+
+        &:disabled {
+          background-color: #c9c5c5;
+          cursor: not-allowed;
+        }
+      }
+
+      &__top {
+        display: flex;
+      }
+
+      &__bottom {
+        color: red;
+        @include font_base(0.7rem, 500);
+        margin-top: 0.4rem;
+      }
+    }
+
+    &-subtotal {
+      width: 11%;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+
+      @include tablet{
+        padding: 0;
+      }
+    }
+  }
+  &-action {
+    width: 17%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    @include tablet{
+      align-items: center;
+    }
+
+    &__button {
+      border: 1px solid #02558b;
+      background-color: #E42D9F;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      font: inherit;
+      align-items: center;
+      padding: .5rem .4rem;
+      @include font_base(.9rem,500);
+      border-radius: 2.5rem;
+
+      &__span {
+        font-size: 1.4rem;
+      }
+
+      &__text {
+        display: none;
+
+        @include desktop{
+          display: flex;
+        }
+      }
+    }
+  }
+}
