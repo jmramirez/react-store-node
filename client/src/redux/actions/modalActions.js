@@ -23,6 +23,6 @@ export const hideAuthModal = () => async(dispatch, getState) => {
     type: CLEAR_REGISTER_FAIL
   })
   dispatch({
-    type: HIDE_AUTH_MODAL
+    type: HIDE_AUTH_MODAL, payload: false
   })
 }
