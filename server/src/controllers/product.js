@@ -126,6 +126,9 @@ router.get(
       images: product.images,
       features: product.features,
       variants: product.variants.map((variant) => ({
+        productId: product.id,
+        name: product.name,
+        thumbnail: product.thumbnail,
         colorId: variant.color.id,
         color: variant.color.name,
         storageId: variant.capacity.id,
