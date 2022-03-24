@@ -1,0 +1,168 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.header {
+  min-width: 20rem;
+  background-color: #02558b;
+  border-bottom: 3px solid #E42D9F;
+
+  &-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5rem 0;
+
+    @include tablet {
+      margin: 0 1.5rem;
+      height: 5rem;
+      align-items: center;
+      padding: 0;
+    }
+
+    @include desktop {
+      max-width: 67.5rem;
+      margin: 0 auto;
+    }
+
+    &__heading {
+      text-decoration: none;
+      font-family: $primary-heading;
+      font-size: 1.6rem;
+      /*padding: 1rem 1.625rem;*/
+      padding: 0 1.625rem;
+      margin: 0.5rem 0;
+      color: #FFFFFF;
+
+      @include tablet {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    &__links {
+      display: flex;
+      margin: 0.5rem 0;
+      align-items: center;
+
+      @include tablet {
+        margin: 0 0 0 auto;
+      }
+
+      &-auth {
+        color: #FFFFFF;
+        cursor: pointer;
+        padding:  .2rem 1rem;
+        background-color: #33678f;
+        border: 2px solid #FFFFFF;
+        outline: none;
+        border-radius: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include font_base(0.9rem, 500);
+        position: relative;
+
+        &__icon {
+          margin-right: .5rem;
+        }
+
+        &-text {
+          display: none;
+
+          @include tablet{
+            display: flex;
+          }
+        }
+
+        &__test {
+          opacity: 0;
+          transition: all .15s;
+          visibility: hidden;
+          position: absolute;
+          top: 2.6rem;
+          right: auto;
+          width: 11.3rem;
+          padding: 0.5rem 1rem;
+          background-color: #FFFFFF;
+          color: #767676;
+          border: 1px solid;
+          border-radius: 0.3rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+
+          @include tablet {
+            flex-direction: row;
+            width: 18rem;
+            right: 0;
+            padding: 1rem;
+            flex-wrap: wrap;
+          }
+
+          &__auth-sign {
+            @include auth_button(#02558b,#FFF);
+            margin: 0.25rem 0;
+
+            @include tablet{
+              margin: 0;
+            }
+          }
+
+          &__auth-create {
+            @include auth_button(#FFF,#02558b);
+            margin: 0.25rem 0;
+
+            @include tablet{
+              margin: 0;
+            }
+          }
+
+          &__auth-demo {
+            @include auth_button(#FFF,#02558b);
+            margin: 0.25rem 0;
+            width: 100%;
+
+            @include tablet{
+              margin: 0.5rem 0.5rem 0 0.5rem;
+            }
+          }
+
+          &--user {
+            top: 2rem;
+          }
+        }
+
+        &:hover & {
+          &__icon {
+            color: #E42D9F;
+          }
+
+          &__test {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-8px);
+          }
+        }
+      }
+    }
+
+    &__shoppingCart {
+      margin-left: .5rem;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      @include font_base(0.9rem, 500);
+
+      &__icon {
+        color: #E42D9F;
+        font-size: 1.7rem;
+
+        @include tablet{
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
