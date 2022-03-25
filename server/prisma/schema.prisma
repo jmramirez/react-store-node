@@ -74,6 +74,7 @@ model ProductVariants {
   capacity  Storage @relation(fields: [storageId], references: [id])
   storageId String
   price     Decimal
+  itema     OrderItem[]
 
   @@id([productId, colorId, storageId])
 }
@@ -86,10 +87,49 @@ model User {
  lastName       String     @db.VarChar(50)
  refreshToken   String
  Roles          Role[]
+ Orders         Order[]
 }
 
 model Role {
  id         String      @id @default(uuid())
  name       String      @unique
  Users      User[]
+}
+
+model Order {
+ id              String           @id @default(uuid())
+ user            User             @relation(fields: [userId], references:[id])
+ userId          String
+ placed          DateTime @default(now())
+ Items           OrderItem[]
+ deliveryAddress Address?
+ paymentStatus   PaymentStatus   @default(Pending)
+}
+
+model OrderItem {
+  id              String           @id @default(uuid())
+  ProductVariant  ProductVariants  @relation(fields: [colorId,storageId,productId], references:[colorId,storageId,productId])
+  colorId         String
+  productId       String
+  storageId       String
+  quantity        Int
+  order           Order            @relation(fields: [orderId], references:[id])
+  orderId         String
+}
+
+model Address {
+ id Int     @id @default(autoincrement())
+ address1   String
+ address2   String
+ townCity   String
+ country    String
+ postCode   String
+ order      Order   @relation(fields:[orderId],references: [id])
+ orderId    String
+}
+
+enum PaymentStatus {
+   Pending
+   Paid
+   Declined
 }
