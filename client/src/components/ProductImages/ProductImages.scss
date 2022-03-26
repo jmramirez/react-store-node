@@ -11,13 +11,19 @@
 
 
   &-main {
-    height: 381px;
-    width: 272px;
+    min-height: 316px;
+    max-width: 420px;
+    height: 97vw;
+    min-width: 314px;
+    width: 98vw;
     padding: 3rem;
+    max-height: 422px;
 
     @include tablet{
-      height: 540px;
-      width: 510px;
+      height: 54.6vw;
+      width: 54.4vw;
+      min-width: 418px;
+      min-height: 420px;
     }
 
     &__img {
