@@ -4,13 +4,13 @@ import { Link} from "react-router-dom";
 export const ProductItem = ({ product }) => (
   <div className="product">
     <div className="product-image">
-      <Link to={product.slug}>
+      <Link to={`/products/${product.slug}`}>
         <img src={product.thumbnail} alt={product.name} className="product-image__src"/>
       </Link>
     </div>
     <div className="product-action">
       <div className="product-content">
-        <Link to={product.slug} className="product-content__heading">
+        <Link to={`/products/${product.slug}`} className="product-content__heading">
           <h2 className="product-content__heading-text">{product.name}</h2>
         </Link>
         <p className="product-content__description">{product.shortDescription}</p>

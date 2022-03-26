@@ -3,7 +3,7 @@ import {Link, useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import Modal from "../Modal/Modal";
 import {useDispatch, useSelector} from "react-redux";
-import {hideAuthModal, showAuthModal} from "../../redux/actions/modalActions";
+import { showAuthModal} from "../../redux/actions/modalActions";
 import axios from "axios";
 import {login, logout} from "../../redux/actions/userActions";
 import { ToastContainer } from "react-toastify";
