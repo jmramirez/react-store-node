@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import environment from '../config/environment';
+import expressJwt from 'express-jwt'
 
 export default class JWTUtils {
   static generateAccessToken(payload, options = {}) {
@@ -18,4 +19,10 @@ export default class JWTUtils {
   static verifyRefreshToken(accessToken) {
     return jwt.sign(accessToken, environment.jwtSecret);
   }
+
+  static requiredSignin = expressJwt({
+    secret: environment.jwtSecret,
+    userProperty: 'auth',
+    algorithms: ['HS256']
+  })
 }
