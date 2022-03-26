@@ -1,0 +1,120 @@
+@use "../../partials/variables" as *;
+@use "../../partials/globals" as *;
+@use "../../partials/mixins" as *;
+
+
+.form--checkout {
+  @extend .form;
+  flex-direction: column-reverse;
+
+  @include tablet{
+    flex-direction: row;
+    justify-content: unset;
+  }
+
+  &__action {
+    @include link_base(.7rem,2rem)
+  }
+
+  &__total {
+    @include font_base(1rem, 600);
+    margin-top: 1rem;
+  }
+
+  &__submitted {
+    margin: 1rem 0;
+    padding: 0 1rem 0.75rem 1rem;
+    border-radius: .25rem;
+
+    &__heading {
+      @include font_base(1.5rem,600);
+      font-family: $primary-heading;
+      margin: 1rem 0;
+    }
+
+    &__paragraph {
+      @include font_base(.9rem,500);
+      margin-bottom:.75rem;
+    }
+
+    &__link {
+      color: #155724;
+      font-weight: 600;
+    }
+
+    &--successfully{
+      color: #155724;
+      border-color: #c3e6cd;
+      background-color: #D4EDDA;
+    }
+
+    &--error {
+      color: #9f3a38;
+      border-color: #e0b4b4;
+      background-color: #fff6f6;
+    }
+  }
+
+  &__successfully {
+    margin: 1rem 0;
+    padding: 0 1rem 0.75rem 1rem;
+    color: #155724;
+    border-color: #c3e6cd;
+    background-color: #D4EDDA;
+    border-radius: .25rem;
+
+    &__heading {
+      @include font_base(1.5rem,600);
+      font-family: $primary-heading;
+      margin: 1rem 0;
+    }
+
+    &__paragraph {
+      @include font_base(.9rem,500);
+      margin-bottom:.75rem;
+    }
+
+    &__link {
+      color: #155724;
+      font-weight: 600;
+    }
+  }
+}
+
+
+
+.StripeElement {
+  display: block;
+  margin: 10px 0 20px 0;
+  max-width: 510px;
+  padding: 0.4rem 1rem;
+  font-size: 1em;
+  font-family: $primary-font, monospace;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+  rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  border: 1px solid #E6E4E4;
+  outline: 0;
+  border-radius: 3rem;
+  background: #FAFAFA;
+}
+
+input::placeholder {
+  color: #aab7c4;
+}
+
+.StripeElement--focus {
+  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px,
+  rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
+
+.StripeElement.IdealBankElement,
+.StripeElement.FpxBankElement,
+.StripeElement.PaymentRequestButton {
+  padding: 0;
+}
+
+.StripeElement.PaymentRequestButton {
+  height: 40px;
+}
