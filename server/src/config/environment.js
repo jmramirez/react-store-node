@@ -8,4 +8,5 @@ export default {
     process.env.JWT_REFRESH_SECRET ||
     '4f43cd0ef639c6bb34342c97186c9435ba1a68694bd49d5746dba1b7f9c85994',
   saltRounds: parseInt(process.env.SALT_W_ROUNDS) || 10,
+  client_url: process.env.CLIENT_URL || 'http://localhost:3000'
 };

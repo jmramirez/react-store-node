@@ -13,7 +13,7 @@ export default class App {
       logger('dev', { skip: (req, res) => environment.env === 'test' })
     );
     this.app.use(helmet({ contentSecurityPolicy: false}))
-    this.app.use(cors())
+    this.app.use(cors({ origin: environment.client_url}))
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.get('/', (req, res) => {
